@@ -1,5 +1,7 @@
 package ar.edu.unq.example
 
+import ar.edu.unq.utils.BaseSpec
+
 class GolondrinaSpec extends BaseSpec {
 
   "Una golondrina" should "perder energia al volar" in {

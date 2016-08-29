@@ -1,4 +1,4 @@
-name := "template-proyecto-scala"
+name := "tp1-mixins-normans-sky"
 
 version := "1.0"
 
