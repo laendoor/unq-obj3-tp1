@@ -23,3 +23,27 @@ abstract class Bag {
     true
   }
 }
+
+/*
+ * this backpack has capacity 40 L
+ */
+trait BagSmall extends Bag {
+
+  def has_capacity_free_volume ():Int
+}
+
+/*
+ * this backpack has capacity 60 L
+ */
+trait BagMedium extends Bag {
+
+  def has_capacity_free_volume ():Int
+}
+
+/*
+ * this backpack has capacity 90 L
+ */
+trait BagBig extends Bag {
+
+  def has_capacity_free_volume ():Int
+}
