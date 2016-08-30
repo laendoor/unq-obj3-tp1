@@ -17,9 +17,9 @@ trait SuitLight extends Suit{
   def walk(distancia:Int) {
 
     if ((distancia * 0.15) > 10)
-      this.setCantidad(10)
+      this.cantidad -= 10
     else
-      this.setCantidad(distancia * 0.15)
+      this.cantidad-=(distancia * 0.15)
 
   }
 }
@@ -37,8 +37,13 @@ trait SuitHeavy extends  Suit{
 
   def walk(distancia:Int) {
 
-    this.setCantidad(distancia * 0.20)
-    this.cantidad = cantidad + 10
+    this.cantidad = this.getcantidad - distancia * 0.20
+    if (this.getcantidad + 10 > 4000)
+        this.setCantidad(400) //falta un caso
+      else
+        this.cantidad += 10
+
+
 
   }
 }
