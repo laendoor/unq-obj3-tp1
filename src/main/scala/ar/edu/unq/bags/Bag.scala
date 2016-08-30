@@ -9,31 +9,18 @@ abstract class Bag {
   val volume: Int
   val items = ListBuffer[Item]()
 
-  def store(item : Item): Unit = {
-    if (fit(item)) {
-      items += item
-    }
-  }
+  // FIXME? throw exception if not fit?
+  def store(item: Item) = if (this fit item) items += item
 
-  def contains(item : Item): Boolean = {
-    items.contains(item)
-  }
+  def contains(item: Item) = items contains item
 
-  def free_space(): Int = {
-    volume - taken_space
-  }
+  def free_space = volume - occupied_space
 
-  def clear(): Unit = {
-    items.clear
-  }
+  def clear = items clear
 
-  protected def fit(item: Item): Boolean = {
-    free_space >= item.volume
-  }
+  protected def fit(item: Item) = free_space >= item.volume
 
-  protected def taken_space(): Int = {
-    items.foldLeft(0)((a,b) => a + b.volume)
-  }
+  protected def occupied_space = items.foldLeft(0)((a,b) => a + b.volume)
 }
 
 

@@ -1,7 +1,5 @@
 package ar.edu.unq.bags
 
-import ar.edu.unq.items.Rock
-
 class SmallBagSpec extends BagSpec {
 
   val bag = new SmallBag
@@ -19,22 +17,22 @@ class SmallBagSpec extends BagSpec {
   }
 
   it should "have a 40000 cc3 of free space with no items inside" in {
-    bag.free_space() shouldBe 40000
+    bag.free_space shouldBe 40000
   }
 
   it should "have 10000 cc3 of free space after store items for 30000 cc3" in {
-    bag.store(new Rock(20000))
-    bag.store(new Rock(10000))
+    this store_rock_of 20000
+    this store_rock_of 10000
 
-    bag.free_space() shouldBe 10000
+    bag.free_space shouldBe 10000
   }
 
   it should "not have free space after store items for 40000 cc3" in {
-    bag.store(new Rock(20000))
-    bag.store(new Rock(10000))
-    bag.store(new Rock(5000))
-    bag.store(new Rock(5000))
+    this store_rock_of 20000
+    this store_rock_of 10000
+    this store_rock_of 5000
+    this store_rock_of 5000
 
-    bag.free_space() shouldBe 0
+    bag.free_space shouldBe 0
   }
 }
