@@ -6,8 +6,8 @@ import scala.collection.mutable.ListBuffer
 
 abstract class Bag {
 
+  val volume: Int
   val items = ListBuffer[Item]()
-  val volume: Int = 50000
 
   def store(item : Item): Unit = {
     if (fit(item)) {
@@ -15,36 +15,48 @@ abstract class Bag {
     }
   }
 
-  def has(item : Item) = {
+  def contains(item : Item): Boolean = {
     items.contains(item)
   }
 
+  def free_space(): Int = {
+    volume - taken_space
+  }
+
+  def clear(): Unit = {
+    items.clear
+  }
+
   protected def fit(item: Item): Boolean = {
-    true
+    free_space >= item.volume
+  }
+
+  protected def taken_space(): Int = {
+    items.foldLeft(0)((a,b) => a + b.volume)
   }
 }
 
 
 /*
- * this backpack has capacity 40 L
+ * This SmallBag has a capacity of 40 liters (40000 cc3)
  */
-trait BagSmall extends Bag {
+class SmallBag extends Bag {
 
-  def has_capacity_free_volume ():Int
+  val volume = 40000
 }
 
 /*
- * this backpack has capacity 60 L
+ * This MediumBag has a capacity of 60 liters (60000 cc3)
  */
-trait BagMedium extends Bag {
+class MediumBag extends Bag {
 
-  def has_capacity_free_volume ():Int
+  val volume = 60000
 }
 
 /*
- * this backpack has capacity 90 L
+ * This LargeBag has a capacity of 90 liters (90000 cc3)
  */
-trait BagBig extends Bag {
+class LargeBag extends Bag {
 
-  def has_capacity_free_volume ():Int
+  val volume = 90000
 }
