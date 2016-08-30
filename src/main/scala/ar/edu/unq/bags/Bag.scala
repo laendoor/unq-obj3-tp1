@@ -24,6 +24,7 @@ abstract class Bag {
   }
 }
 
+
 /*
  * this backpack has capacity 40 L
  */
