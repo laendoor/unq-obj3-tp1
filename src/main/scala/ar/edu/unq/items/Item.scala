@@ -2,7 +2,7 @@ package ar.edu.unq.items
 
 abstract class Item(var volume: Int, var tipo: String) {
   abstract def compact: Int
-   def desidratacion: Int = 0
+   def Dehydration: Int = 0
 }
 
 
@@ -12,7 +12,7 @@ class Rock(volume: Int) extends Item(volume,"Rock") {
 class OrganicItem(volume: Int) extends Item(volume,"organic") {
     var agua = 5
   override def compact: Int = 0
-  override def desidratacion: Int = this.volume - this.agua
+  override def Dehydration: Int = this.volume - this.agua
 }
 
 class ItemCompact(volume: Int) extends Item(volume,"compact") {

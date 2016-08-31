@@ -11,16 +11,10 @@ trait CopactEmpty {
   }
 }
 
-trait BagDesidratacion{
+trait BagDehydration{
 
   def compacting(bag: Bag){
-    bag.items.foreach { arg =>
-      if(arg.tipo == "organic"){
-        bag.volume -= arg.desidratacion
-
-      }
-
-    }
+    bag.items.foreach { arg => bag.volume -= arg.Dehydration}
   }
 
 }
