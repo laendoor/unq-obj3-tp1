@@ -1,7 +1,7 @@
 package ar.edu.unq.items
 
-abstract class Item(var volume: Int, var tipo: String) {
-  abstract def compact: Int
+abstract class Item(val volume: Int, val tipo: String) {
+   def compact: Int
    def Dehydration: Int = 0
 }
 
@@ -16,7 +16,7 @@ class OrganicItem(volume: Int) extends Item(volume,"organic") {
 }
 
 class ItemCompact(volume: Int) extends Item(volume,"compact") {
-  override def compact: Int = this.volume/2
+  override def compact: Int = this.volume -2 // hace la divicion
 }
 
 class ItemSemiCompact(volume: Int) extends Item(volume,"Semi") {

@@ -7,7 +7,7 @@ trait CopactEmpty {
 
   def compacting(bag: Bag){
 
-    bag.items.foreach { arg =>  bag.volume -= arg.compact}
+    bag.items.foreach { arg =>  bag.volume =  arg.compact}
   }
 }
 
@@ -18,5 +18,6 @@ trait BagDehydration{
   }
 
 }
+
 
 

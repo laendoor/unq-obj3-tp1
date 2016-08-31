@@ -6,7 +6,7 @@ import scala.collection.mutable.ListBuffer
 
 abstract class Bag {
 
-  val volume: Int
+  var volume: Int
   val items = ListBuffer[Item]()
 
   // FIXME? throw exception if not fit?

@@ -1,47 +1,47 @@
 package ar.edu.unq.suit
 
 class Suit {
-  var cantOxigeno  : Int =_
+  var cantOxygen  : Int =_
 }
 
 trait SuitLight extends Suit{
- var cantidad = 1500 : Double
-  def getcantidad : Double  = {
-    this.cantidad
+ var cant = 1500 : Double
+  def getCant : Double  = {
+    this.cant
   }
 
-  def setCantidad(algo:Double) {
-    this.cantidad = algo
+  def setCant(algo:Double) {
+    this.cant = algo
   }
 
-  def walk(distancia:Int) {
+  def walk(distance:Int) {
 
-    if ((distancia * 0.15) > 10)
-      this.cantidad -= 10
+    if ((distance * 0.15) > 10)
+      this.cant -= 10
     else
-      this.cantidad-=(distancia * 0.15)
+      this.cant -= (distance * 0.15)
 
   }
 }
 
 trait SuitHeavy extends  Suit{
-  var cantidad = 4000 : Double
+  var cant = 4000 : Double
 
-  def getcantidad : Double  = {
-    this.cantidad
+  def getcant : Double  = {
+    this.cant
   }
 
-  def setCantidad(algo:Double) {
-    this.cantidad = algo
+  def setCant(algo:Double) {
+    this.cant = algo
   }
 
-  def walk(distancia:Int) {
+  def walk(distance:Int) {
 
-    this.cantidad = this.getcantidad - distancia * 0.20
-    if (this.getcantidad + 10 > 4000)
-        this.setCantidad(400) //falta un caso
+    this.cant = this.getcant - distance * 0.20
+    if (this.getcant + 10 > 4000)
+        this.setCant(400) //falta un caso
       else
-        this.cantidad += 10
+        this.cant += 10
 
 
 
