@@ -1,8 +1,12 @@
 package ar.edu.unq.bags
 
-class LargeBagSpec extends BagSpec {
+class LargeBagSpec extends BagSpec with LargeStoring {
 
   val bag = new LargeBag
+
+}
+
+trait LargeStoring extends Storeable {
 
   "A large bag" should "store a rock of 0 cc3" in {
     can_store_rock_of(0) shouldBe true
@@ -17,14 +21,14 @@ class LargeBagSpec extends BagSpec {
   }
 
   it should "have a 90000 cc3 of free space with no items inside" in {
-    bag.free_space shouldBe 90000
+    free_space shouldBe 90000
   }
 
   it should "have 60000 cc3 of free space after store items for 30000 cc3" in {
     this store_rock_of 20000
     this store_rock_of 10000
 
-    bag.free_space shouldBe 60000
+    free_space shouldBe 60000
   }
 
   it should "not have free space after store items for 90000 cc3" in {
@@ -40,6 +44,6 @@ class LargeBagSpec extends BagSpec {
     this store_rock_of 2500
     this store_rock_of 2500
 
-    bag.free_space shouldBe 0
+    free_space shouldBe 0
   }
 }
