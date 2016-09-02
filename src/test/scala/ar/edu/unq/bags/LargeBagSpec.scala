@@ -7,7 +7,7 @@ class LargeBagSpec extends BagSpec with LargeStoring {
 }
 
 trait LargeStoring extends Storeable {
-
+/*
   "A large bag" should "store a rock of 0 cc3" in {
     can_store_rock_of(0) shouldBe true
   }
@@ -46,4 +46,5 @@ trait LargeStoring extends Storeable {
 
     free_space shouldBe 0
   }
+*/
 }

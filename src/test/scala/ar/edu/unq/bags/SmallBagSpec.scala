@@ -7,7 +7,7 @@ class SmallBagSpec extends BagSpec with SmallStoring {
 }
 
 trait SmallStoring extends Storeable {
-
+/*
   "A small bag" should "store a rock of 0 cc3" in {
     can_store_rock_of(0) shouldBe true
   }
@@ -38,5 +38,5 @@ trait SmallStoring extends Storeable {
     this store_rock_of 5000
 
     free_space shouldBe 0
-  }
+  }*/
 }

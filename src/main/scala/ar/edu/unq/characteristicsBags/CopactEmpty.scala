@@ -13,7 +13,7 @@ trait CopactEmpty {
 trait BagDehydration{
 
   def compacting(bag: Bag){
-    bag.items.foreach { item => item.Dehydration }
+    bag.items.foreach { item => item.dehydrate}
   }
 
 }

@@ -22,21 +22,5 @@ abstract class OrganicItem(vol: Int, waterVolume: Int) extends Item(vol) {
   }
 }
 
-<<<<<<< HEAD
-class ItemCompact(volume: Int) extends Item(volume) {
-  override def compact: Int = this.volume / 2
-=======
-
-class Rock(volume: Int) extends InorganicItem(volume)
-  with NonCompacting
-
-class Ball(volume: Int) extends InorganicItem(volume)
-  with Compacting
-
-class Paper(volume: Int, compactPoints: Int) extends InorganicItem(volume)
-  with SemiCompacting {
-    override val cp: Int = compactPoints
->>>>>>> cc8c16055d2da95a88854ae47f378bbe1b855f78
-}
 
 class Plant(volume: Int, waterVolume: Int) extends OrganicItem(volume, waterVolume)
