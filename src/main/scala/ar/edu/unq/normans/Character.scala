@@ -19,8 +19,8 @@ class Character {
   def canStore(item: Item): Boolean = bag canStore item
   def freeSpace: Int = bag.freeSpace
 
-  def compact: Unit   = bag.compact
-  def dehydrate: Unit = bag.dehydrate
+  def compact(): Unit   = bag.compact()
+  def dehydrate(): Unit = bag.dehydrate()
 
   def receiveHit(damage: Double): Unit = {
     energy = Math.max(0, energy - bag.absorb(damage))

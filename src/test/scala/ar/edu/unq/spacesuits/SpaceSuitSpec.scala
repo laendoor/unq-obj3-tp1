@@ -7,7 +7,7 @@ abstract class SpaceSuitSpec extends BaseSpec {
   val suit: SpaceSuit
 
   after {
-    suit restoreOxygen
+    suit restoreOxygen()
   }
 
 }

@@ -7,7 +7,7 @@ abstract class BagSpec extends BaseSpec {
   val bag: Bag
 
   after {
-    bag clear
+    bag clear()
   }
 
 }

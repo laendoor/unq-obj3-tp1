@@ -16,13 +16,13 @@ abstract class Bag {
   def canStore(item: Item) = freeSpace >= item.volume && freeWeight >= item.mass * gravity
   def contains(item: Item) = items contains item
 
-  def clear      = items clear
+  def clear()    = items.clear
   def energy     = items.foldLeft(0.0){ (acc, item) => acc + item.energy }
   def freeSpace  = volume - occupiedSpace
   def freeWeight = weight - occupiedWeight
 
-  def compact {}
-  def dehydrate {}
+  def compact() {}
+  def dehydrate() {}
 
   def absorb(damage: Double): Double = damage
   def receiveHit(damage: Double) = {

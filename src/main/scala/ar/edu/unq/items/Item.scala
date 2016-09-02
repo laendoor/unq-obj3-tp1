@@ -4,8 +4,8 @@ abstract class Item(var volume: Int, val mass: Double = 0.0, var energy: Double)
 
   var compacted: Boolean = false
 
-  def compact: Unit = compacted = true
-  def dehydrate {}
+  def compact(): Unit = compacted = true
+  def dehydrate() {}
   def isOrganic: Boolean
   def receiveHit(damage: Double): Unit = {
     energy = if (damage < energy) energy - damage else 0
@@ -22,7 +22,7 @@ abstract class OrganicItem(vol: Int, mass: Double, energy: Double, waterVolume: 
 
     var wv = waterVolume
     override def isOrganic: Boolean = true
-    override def dehydrate: Unit = {
+    override def dehydrate(): Unit = {
       volume = volume - wv
       wv = 0
     }

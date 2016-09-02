@@ -20,7 +20,7 @@ class CharacterSpec extends BaseSpec {
     miles store new Plant(volume = 10000, waterVolume = 8000)
 
     miles.freeSpace shouldBe 30000
-    miles.dehydrate
+    miles.dehydrate()
     miles.freeSpace shouldBe 38000
   }
 
@@ -29,7 +29,7 @@ class CharacterSpec extends BaseSpec {
     miles store new Ball(10000)
 
     miles.freeSpace shouldBe 30000
-    miles.compact
+    miles.compact()
     miles.freeSpace shouldBe 35000
   }
 
