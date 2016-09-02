@@ -9,7 +9,6 @@ abstract class Bag {
   val volume: Int
   val items = ListBuffer[Item]()
 
-  // FIXME? throw exception if not fit?
   def store(item: Item) = if (this fit item) items += item
 
   def contains(item: Item) = items contains item
@@ -17,6 +16,14 @@ abstract class Bag {
   def free_space = volume - occupied_space
 
   def clear = items clear
+
+  // Si no agrego asi los métodos no puedo hacer esto:
+  // john = new Character
+  // john.bag = new SmallBag with VacuumCompaction with Dehydrator
+  // john.bag.compact
+  // john.bag.dehydrate
+  def compact {}
+  def dehydrate {}
 
   protected def fit(item: Item) = free_space >= item.volume
 
@@ -46,4 +53,16 @@ class MediumBag extends Bag {
 class LargeBag extends Bag {
 
   val volume = 90000
+}
+
+trait VacuumCompaction extends Bag {
+
+  override def compact: Unit = items.foreach { item => item.compact }
+
+}
+
+trait Dehydrator extends Bag {
+
+  override def dehydrate: Unit = items.foreach { item => item.dehydrate }
+
 }
