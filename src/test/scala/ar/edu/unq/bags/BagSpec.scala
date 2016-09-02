@@ -1,6 +1,6 @@
 package ar.edu.unq.bags
 
-import ar.edu.unq.items.{Ball, Item, Paper, Rock}
+import ar.edu.unq.items._
 import ar.edu.unq.utils.BaseSpec
 
 abstract class BagSpec extends Storeable {
@@ -35,10 +35,16 @@ trait Storeable extends BaseSpec {
   protected def store_rock_of(volume: Int) = store (new Rock(volume))
   protected def store_ball_of(volume: Int) = store (new Ball(volume))
   protected def store_paper_of(volume: Int, cp: Int) = store (new Paper(volume, cp))
+  protected def store_plant_of(volume: Int, wv: Int) = store (new Plant(volume, wv))
 
 }
 
 trait Compactable extends BaseSpec {
 
   def compact: Unit
+}
+
+trait Dehydratable extends BaseSpec {
+
+  def dehydrate: Unit
 }

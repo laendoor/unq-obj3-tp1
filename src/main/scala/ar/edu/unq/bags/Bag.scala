@@ -9,7 +9,6 @@ abstract class Bag {
   val volume: Int
   val items = ListBuffer[Item]()
 
-  // FIXME? throw exception if not fit?
   def store(item: Item) = if (this fit item) items += item
 
   def contains(item: Item) = items contains item
@@ -51,5 +50,11 @@ class LargeBag extends Bag {
 trait VacuumCompaction extends Bag {
 
   def compact: Unit = items.foreach { item => item.compact }
+
+}
+
+trait Dehydrator extends Bag {
+
+  def dehydrate: Unit = items.foreach { item => item.dehydrate }
 
 }
