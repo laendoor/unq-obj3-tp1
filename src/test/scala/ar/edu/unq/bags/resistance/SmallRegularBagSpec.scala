@@ -1,6 +1,6 @@
 package ar.edu.unq.bags.resistance
 
-import ar.edu.unq.bags.{BagSpec, RegularBag, SemiRigidBag, SmallBag}
+import ar.edu.unq.bags.{BagSpec, RegularBag, SmallBag}
 import ar.edu.unq.items.Rock
 
 class SmallRegularBagSpec extends BagSpec {

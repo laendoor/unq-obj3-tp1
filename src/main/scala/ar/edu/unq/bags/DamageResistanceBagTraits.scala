@@ -6,27 +6,20 @@ trait ResistanceBag extends Bag {
 
   protected def absorb(damage: Double): Double
   def receiveHit(damage: Double) = {
-    items.foreach { item => item.receiveHit( absorb(damage) ) }
+    items.foreach { item => item.receiveHit(this absorb damage) }
   }
 }
 
 trait RigidBag extends ResistanceBag {
-
   override def absorb(damage: Double) = damage * (1 - absorption)
-
-  def shield(damage: Double) = damage / 2
 }
 
 trait SemiRigidBag extends ResistanceBag {
-
-  override def absorb(damage: Double) = if (damage > absorption) damage - absorption else 0
-
-  def shield(damage: Double) = damage -10
+  override def absorb(damage: Double) = {
+    if (damage > absorption) damage - absorption else 0
+  }
 }
 
 trait  RegularBag extends ResistanceBag {
-
   override def absorb(damage: Double) = damage
-
-  def shield(damage: Double) = damage
 }
