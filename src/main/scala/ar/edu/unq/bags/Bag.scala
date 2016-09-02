@@ -8,6 +8,7 @@ abstract class Bag {
 
   val volume: Int
   val weight: Int
+  val absorption: Double = 0.0
   var gravity: Double = 9.8 // m/s^2, default on earth
   val items = ListBuffer[Item]()
 
@@ -19,6 +20,14 @@ abstract class Bag {
   def energy     = items.foldLeft(0.0){ (acc, item) => acc + item.energy }
   def freeSpace  = volume - occupiedSpace
   def freeWeight = weight - occupiedWeight
+
+  def compact {}
+  def dehydrate {}
+
+  def absorb(damage: Double): Double = damage
+  def receiveHit(damage: Double) = {
+    items.foreach { item => item.receiveHit(this absorb damage) }
+  }
 
   protected def occupiedSpace  = items.foldLeft(0) { (acc, item) => acc + item.volume }
   protected def occupiedWeight = items.foldLeft(0.0) { (acc, item) => acc + item.mass * gravity }

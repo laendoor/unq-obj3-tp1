@@ -1,25 +1,15 @@
 package ar.edu.unq.bags
 
-trait ResistanceBag extends Bag {
-
-  val absorption: Double
-
-  protected def absorb(damage: Double): Double
-  def receiveHit(damage: Double) = {
-    items.foreach { item => item.receiveHit(this absorb damage) }
-  }
-}
-
-trait RigidBag extends ResistanceBag {
+trait RigidBag extends Bag {
   override def absorb(damage: Double) = damage * (1 - absorption)
 }
 
-trait SemiRigidBag extends ResistanceBag {
+trait SemiRigidBag extends Bag {
   override def absorb(damage: Double) = {
     if (damage > absorption) damage - absorption else 0
   }
 }
 
-trait  RegularBag extends ResistanceBag {
+trait  RegularBag extends Bag {
   override def absorb(damage: Double) = damage
 }
