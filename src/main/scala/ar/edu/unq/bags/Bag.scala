@@ -47,3 +47,9 @@ class LargeBag extends Bag {
 
   val volume = 90000
 }
+
+trait VacuumCompaction extends Bag {
+
+  def compact: Unit = items.foreach { item => item.compact }
+
+}
