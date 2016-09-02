@@ -17,6 +17,14 @@ abstract class Bag {
 
   def clear = items clear
 
+  // Si no agrego asi los métodos no puedo hacer esto:
+  // john = new Character
+  // john.bag = new SmallBag with VacuumCompaction with Dehydrator
+  // john.bag.compact
+  // john.bag.dehydrate
+  def compact {}
+  def dehydrate {}
+
   protected def fit(item: Item) = free_space >= item.volume
 
   protected def occupied_space = items.foldLeft(0)((a,b) => a + b.volume)
@@ -49,12 +57,12 @@ class LargeBag extends Bag {
 
 trait VacuumCompaction extends Bag {
 
-  def compact: Unit = items.foreach { item => item.compact }
+  override def compact: Unit = items.foreach { item => item.compact }
 
 }
 
 trait Dehydrator extends Bag {
 
-  def dehydrate: Unit = items.foreach { item => item.dehydrate }
+  override def dehydrate: Unit = items.foreach { item => item.dehydrate }
 
 }
