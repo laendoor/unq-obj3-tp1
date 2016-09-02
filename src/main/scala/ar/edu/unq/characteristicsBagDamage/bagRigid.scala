@@ -15,7 +15,7 @@ trait   BagSemiRigid {
 
   }
 
-trait  Regular {
+trait  BagRegular {
 
     def shield(damage: Int): Unit = {
       return damage

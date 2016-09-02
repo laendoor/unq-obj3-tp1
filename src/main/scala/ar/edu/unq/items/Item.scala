@@ -16,7 +16,7 @@ class OrganicItem(volume: Int) extends Item(volume) {
 }
 
 class ItemCompact(volume: Int) extends Item(volume) {
-  override def compact: Int = this.volume -2 // hace la division
+  override def compact: Int = this.volume / 2
 }
 
 class ItemSemiCompact(volume: Int) extends Item(volume) {
