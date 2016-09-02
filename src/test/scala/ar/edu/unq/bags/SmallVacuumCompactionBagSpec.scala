@@ -9,7 +9,7 @@ class SmallVacuumCompactionBagSpec extends BagSpec with VacuumCompactionSpec {
 }
 
 trait VacuumCompactionSpec extends Storeable with Compactable {
-/*
+
   "A small bag with vacuum compaction" should "store a non-compactable rock and apply compaction and keep same free space" in {
     this store_rock_of 10000
     free_space shouldBe 30000
@@ -30,5 +30,5 @@ trait VacuumCompactionSpec extends Storeable with Compactable {
     compact
     free_space shouldBe 32000
   }
-*/
+
 }

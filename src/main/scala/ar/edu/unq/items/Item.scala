@@ -21,6 +21,3 @@ abstract class OrganicItem(vol: Int, waterVolume: Int) extends Item(vol) {
     wv = 0
   }
 }
-
-
-class Plant(volume: Int, waterVolume: Int) extends OrganicItem(volume, waterVolume)

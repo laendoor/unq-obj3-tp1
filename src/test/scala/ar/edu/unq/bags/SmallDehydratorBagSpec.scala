@@ -16,12 +16,12 @@ trait DehydratationSpec extends Storeable with Dehydratable {
     dehydrate
     free_space shouldBe 38000
   }
-/*
+
   it should "store a inorganic rock and apply dehydratation and keep the same free space " in {
     this store_rock_of 10000
     free_space shouldBe 30000
     dehydrate
     free_space shouldBe 30000
   }
-*/
+
 }
