@@ -1,7 +1,5 @@
 package ar.edu.unq.suit
 
-import ar.edu.unq.characteristicsBagDamage.BagRegular
-import ar.edu.unq.normans.Character
 import ar.edu.unq.utils.BaseSpec
 
 

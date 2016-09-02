@@ -13,9 +13,11 @@ abstract class Bag {
 
   def contains(item: Item) = items contains item
 
-  def free_space = volume - occupied_space
+  def freeSpace = volume - occupiedSpace
 
   def clear = items clear
+
+  def energy = items.foldLeft(0.0){ (acc, item) => acc + item.energy }
 
   // Si no agrego asi los métodos no puedo hacer esto:
   // john = new Character
@@ -25,7 +27,7 @@ abstract class Bag {
   def compact {}
   def dehydrate {}
 
-  protected def fit(item: Item) = free_space >= item.volume
+  protected def fit(item: Item) = freeSpace >= item.volume
 
-  protected def occupied_space = items.foldLeft(0)((a,b) => a + b.volume)
+  protected def occupiedSpace = items.foldLeft(0) { (acc, item) => acc + item.volume }
 }

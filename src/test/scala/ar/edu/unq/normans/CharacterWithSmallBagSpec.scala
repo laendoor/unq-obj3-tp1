@@ -1,6 +1,7 @@
 package ar.edu.unq.normans
 
 import ar.edu.unq.bags._
+import ar.edu.unq.bags.compaction.{DehydratationSpec, VacuumCompactionSpec}
 
 class CharacterWithSmallBagSpec extends CharacterWithBagSpec
   with SmallStoring

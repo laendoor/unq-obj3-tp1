@@ -11,7 +11,7 @@ abstract class BagSpec extends Storeable {
     bag clear
   }
 
-  override def free_space: Int      = bag.free_space
+  override def free_space: Int      = bag.freeSpace
   override def store(item: Item)    = bag store item
   override def contains(item: Item) = bag contains item
 

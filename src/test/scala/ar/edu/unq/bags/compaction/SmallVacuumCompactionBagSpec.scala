@@ -1,4 +1,6 @@
-package ar.edu.unq.bags
+package ar.edu.unq.bags.compaction
+
+import ar.edu.unq.bags._
 
 class SmallVacuumCompactionBagSpec extends BagSpec with VacuumCompactionSpec {
 

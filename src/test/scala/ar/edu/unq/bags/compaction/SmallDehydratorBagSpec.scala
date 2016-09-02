@@ -1,4 +1,6 @@
-package ar.edu.unq.bags
+package ar.edu.unq.bags.compaction
+
+import ar.edu.unq.bags._
 
 class SmallDehydratorBagSpec extends BagSpec with DehydratationSpec {
 

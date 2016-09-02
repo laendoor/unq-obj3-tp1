@@ -5,6 +5,7 @@ class MediumBagSpec extends BagSpec with MediumStoring {
   val bag = new MediumBag
 
 }
+
 trait MediumStoring extends Storeable {
 
   "A medium bag" should "store a rock of 0 cc3" in {
