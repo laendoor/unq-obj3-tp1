@@ -1,6 +1,6 @@
 package ar.edu.unq.items
 
-abstract class Item(var volume: Int, var energy: Double) {
+abstract class Item(var volume: Int, val mass: Double = 0.0, var energy: Double) {
 
   var compacted: Boolean = false
 
@@ -12,12 +12,13 @@ abstract class Item(var volume: Int, var energy: Double) {
   }
 }
 
-abstract class InorganicItem(volume: Int, energy: Double) extends Item(volume, energy) {
-  override def isOrganic: Boolean = false
+abstract class InorganicItem(volume: Int, mass: Double, energy: Double)
+  extends Item(volume, mass, energy) {
+    override def isOrganic: Boolean = false
 }
 
-abstract class OrganicItem(vol: Int, energy: Double, waterVolume: Int)
-  extends Item(vol, energy: Double) {
+abstract class OrganicItem(vol: Int, mass: Double, energy: Double, waterVolume: Int)
+  extends Item(vol, mass, energy = energy) {
 
     var wv = waterVolume
     override def isOrganic: Boolean = true
