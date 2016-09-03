@@ -29,6 +29,9 @@ abstract class Bag {
     items.foreach { item => item.receiveHit(this absorb damage) }
   }
 
+  def hasFuelFor(seconds: Int): Boolean = false
+  def consume(time: Int) {}
+
+  def occupiedWeight = items.foldLeft(0.0) { (acc, item) => acc + item.mass * gravity }
   protected def occupiedSpace  = items.foldLeft(0) { (acc, item) => acc + item.volume }
-  protected def occupiedWeight = items.foldLeft(0.0) { (acc, item) => acc + item.mass * gravity }
 }

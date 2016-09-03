@@ -2,11 +2,14 @@ package ar.edu.unq.normans
 
 import ar.edu.unq.bags.Bag
 import ar.edu.unq.items.Item
+import ar.edu.unq.spacesuits.SpaceSuit
 
 class Character {
 
   var bag: Bag = _
+  var suit: SpaceSuit = _
   var energy: Double = 0
+  var altitude: Double = 0.0
 
   private var _gravity: Double = 9.8 // m/s^2, default on earth
   def gravity = _gravity
@@ -18,6 +21,7 @@ class Character {
   def store(item: Item): Unit = bag store item
   def canStore(item: Item): Boolean = bag canStore item
   def freeSpace: Int = bag.freeSpace
+  def oxygen: Double = suit.oxygen
 
   def compact(): Unit   = bag.compact()
   def dehydrate(): Unit = bag.dehydrate()
@@ -25,6 +29,19 @@ class Character {
   def receiveHit(damage: Double): Unit = {
     energy = Math.max(0, energy - bag.absorb(damage))
     bag.receiveHit(damage)
+  }
+
+  def ascend(time: Int): Unit = {
+    for (t <- 1 to time) {
+      if (bag.hasFuelFor(1)) {
+        altitude += 0.5
+        bag.consume(1)
+      }
+    }
+  }
+
+  def walk(kms: Int): Unit = {
+    suit.walk(kms, bag.occupiedWeight)
   }
 
 }
