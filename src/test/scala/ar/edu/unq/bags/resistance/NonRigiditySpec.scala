@@ -1,13 +1,13 @@
 package ar.edu.unq.bags.resistance
 
-import ar.edu.unq.bags.{RegularBag, SmallBag}
+import ar.edu.unq.bags.{NonRigidity, SmallBag}
 import ar.edu.unq.items.Rock
 import ar.edu.unq.utils.BaseSpec
 
-trait RegularSpec extends BaseSpec {
+trait NonRigiditySpec extends BaseSpec {
 
   "A small regular rigid bag that receive a hit damage" should "not absorb damage" in {
-    val bag = new SmallBag with RegularBag {
+    val bag = new SmallBag with NonRigidity {
       override val absorption: Double = 0.0
     }
     val rock = new Rock(100)

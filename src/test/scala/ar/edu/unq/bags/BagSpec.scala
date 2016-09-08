@@ -10,6 +10,6 @@ class BagSpec extends BaseSpec
   with LargeBagSpec
   with DehydrationSpec
   with VacuumCompactionSpec
-  with RegularSpec
-  with RigidSpec
-  with SemiRigidSpec
+  with NonRigiditySpec
+  with RigiditySpec
+  with SemiRigiditySpec
