@@ -21,9 +21,6 @@ abstract class Bag {
   def freeSpace  = volume - occupiedSpace
   def freeWeight = weight - occupiedWeight
 
-  def compact() {}
-  def dehydrate() {}
-
   def absorb(damage: Double): Double = damage
   def receiveHit(damage: Double) = {
     items.foreach { item => item.receiveHit(this absorb damage) }
