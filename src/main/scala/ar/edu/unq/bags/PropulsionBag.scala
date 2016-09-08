@@ -1,6 +1,4 @@
-package ar.edu.unq.bags.propulsions
-
-import ar.edu.unq.bags.Bag
+package ar.edu.unq.bags
 
 trait PropulsionBag extends Bag {
 
