@@ -1,14 +1,11 @@
 package ar.edu.unq.bags
+import ar.edu.unq.items.Item
 
 
 trait VacuumCompaction extends Bag {
-
-  override def compact(): Unit = items.foreach { item => item.compact }
-
+  override def store(item: Item) = super.store (item compact)
 }
 
-trait Dehydrator extends Bag {
-
-  override def dehydrate(): Unit = items.foreach { item => item.dehydrate }
-
+trait Dehydration extends Bag {
+  override def store(item: Item) = super.store (item dehydrate)
 }

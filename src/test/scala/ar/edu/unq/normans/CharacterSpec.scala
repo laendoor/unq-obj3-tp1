@@ -21,23 +21,17 @@ class CharacterSpec extends BaseSpec
 
 trait CharacterBagsSpec extends BaseSpec {
 
-  "A character with an small dehydratator bag" should "store a organic plant and apply dehydratation and increase free space by water level or plant" in {
+  "A character with an small dehydratator bag" should "store a organic plant and keep 38L of free space" in {
     val miles = new Character
-    miles.bag = new SmallBag with Dehydrator
+    miles.bag = new SmallBag with Dehydration
     miles store new Plant(volume = 10000, waterVolume = 8000)
-
-    miles.freeSpace shouldBe 30000
-    miles.dehydrate()
     miles.freeSpace shouldBe 38000
   }
 
-  "A character with an small vacuum compaction bag" should "store a compactable ball and apply compaction and free space increases by 50% of ball volume" in {
+  "A character with an small vacuum compaction bag" should "store a compactable ball and keep 35L of free space" in {
     val miles = new Character
     miles.bag = new SmallBag with VacuumCompaction
     miles store new Ball(10000)
-
-    miles.freeSpace shouldBe 30000
-    miles.compact()
     miles.freeSpace shouldBe 35000
   }
 

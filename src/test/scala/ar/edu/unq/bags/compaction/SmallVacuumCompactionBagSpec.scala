@@ -1,30 +1,28 @@
 package ar.edu.unq.bags.compaction
 
-import ar.edu.unq.bags._
+import ar.edu.unq.bags.{SmallBag, VacuumCompaction}
 import ar.edu.unq.items.{Ball, Paper, Rock}
+import ar.edu.unq.utils.BaseSpec
 
-class SmallVacuumCompactionBagSpec extends BagSpec {
+class SmallVacuumCompactionBagSpec extends BaseSpec {
 
-  val bag = new SmallBag with VacuumCompaction
-
-  "A small bag with vacuum compaction" should "store a non-compactable rock and apply compaction and keep same free space" in {
-    bag store new Rock(10000)
-    bag.freeSpace shouldBe 30000
-    bag.compact()
+  "A small bag (40L) with vacuum compaction" should "store a non-compactable rock with 10L of volume and have 30L of free space" in {
+    val bag = new SmallBag with VacuumCompaction
+    bag store new Rock(volume = 10000)
     bag.freeSpace shouldBe 30000
   }
 
-  it should "store a compactable ball and apply compaction and free space increases by 50% of ball volume" in {
-    bag store new Ball(10000)
-    bag.freeSpace shouldBe 30000
-    bag.compact()
+  it should "store a compactable ball with 10L of volume and have 35L of free space" in {
+    val bag = new SmallBag with VacuumCompaction
+    bag store new Ball(volume = 10000)
     bag.freeSpace shouldBe 35000
   }
 
-  it should "store a semi-compactable paper and apply compaction and free space increases by compaction-points of ball volume" in {
-    bag store new Paper(volume = 10000, compactPoints = 2000)
-    bag.freeSpace shouldBe 30000
-    bag.compact()
+  it should "store a semi-compactable paper with 10L of volume and 2L of compact points and have 32L of free space" in {
+    val bag = new SmallBag with VacuumCompaction
+    val paper = new Paper(volume = 10000)
+    paper cp = 2000
+    bag store paper
     bag.freeSpace shouldBe 32000
   }
 
