@@ -4,7 +4,7 @@ abstract class Item(var volume: Int, val mass: Double = 0.0, var energy: Double)
   def compact: Item
   def dehydrate: Item
   def receiveHit(damage: Double): Unit = {
-    energy = if (damage < energy) energy - damage else 0
+    energy = Math.max(0, energy - damage)
   }
 }
 
