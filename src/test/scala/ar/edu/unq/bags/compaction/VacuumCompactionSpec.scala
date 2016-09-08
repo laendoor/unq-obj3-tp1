@@ -4,7 +4,7 @@ import ar.edu.unq.bags.{SmallBag, VacuumCompaction}
 import ar.edu.unq.items.{Ball, Paper, Rock}
 import ar.edu.unq.utils.BaseSpec
 
-class SmallVacuumCompactionBagSpec extends BaseSpec {
+trait VacuumCompactionSpec extends BaseSpec {
 
   "A small bag (40L) with vacuum compaction" should "store a non-compactable rock with 10L of volume and have 30L of free space" in {
     val bag = new SmallBag with VacuumCompaction
