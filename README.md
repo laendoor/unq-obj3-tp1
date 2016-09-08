@@ -1,4 +1,4 @@
-+![](https://codeship.com/projects/172810/status?branch=master)
+![](https://codeship.com/projects/172810/status?branch=master)
 
 # TP - Mixins: Norman’s Sky
 
