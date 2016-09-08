@@ -27,7 +27,7 @@ class Character {
   def dehydrate(): Unit = bag.dehydrate()
 
   def receiveHit(damage: Double): Unit = {
-    energy = Math.max(0, energy - bag.absorb(damage))
+    energy = Math.max(0, energy - damage)
     bag.receiveHit(damage)
   }
 
