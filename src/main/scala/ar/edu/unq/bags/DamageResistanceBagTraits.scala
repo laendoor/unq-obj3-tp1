@@ -5,11 +5,10 @@ trait Rigidity extends Bag {
 }
 
 trait SemiRigidity extends Bag {
-  override def absorb(damage: Double) = {
-    if (damage > absorption) damage - absorption else 0
-  }
+  override def absorb(damage: Double) = Math.max(0, damage - absorption)
 }
 
-trait NonRigidity extends Bag {
-  override def absorb(damage: Double) = damage
+trait NonRigidity {
+  val absorption: Double = 0.0
+  def absorb(damage: Double) = damage
 }

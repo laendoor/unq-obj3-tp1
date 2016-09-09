@@ -3,12 +3,11 @@ package ar.edu.unq.bags
 import ar.edu.unq.items.Item
 import scala.collection.mutable.ListBuffer
 
-abstract class Bag extends NoPropulsionBag {
+abstract class Bag extends NonRigidity with NoPropulsionBag {
 
   val volume: Int
   val weight: Int
   var gravity: Double = 9.8
-  val absorption: Double = 0.0
   val items = ListBuffer[Item]()
 
   def store(item: Item)    = if (this canStore item) items += item
@@ -20,7 +19,6 @@ abstract class Bag extends NoPropulsionBag {
   def occupiedSpace  = items map (_.volume) sum
   def occupiedWeight = items map (_.mass * gravity) sum
 
-  def absorb(damage: Double): Double = damage
   def receiveHit(damage: Double) = {
     items foreach { item => item receiveHit (this absorb damage) }
   }
