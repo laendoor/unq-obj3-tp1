@@ -25,20 +25,20 @@ class Character {
 
   def receiveHit(damage: Double): Unit = {
     energy = Math.max(0, energy - damage)
-    bag.receiveHit(damage)
+    bag receiveHit damage
   }
 
   def ascend(time: Int): Unit = {
     for (t <- 1 to time) {
-      if (bag.hasFuelFor(1)) {
+      if (bag hasFuelFor 1) {
         altitude += 0.5
-        bag.consume(1)
+        bag consumeFuelFor 1
       }
     }
   }
 
   def walk(kms: Int): Unit = {
-    suit.walk(kms, bag.occupiedWeight)
+    suit walk (kms, bag.occupiedWeight)
   }
 
 }

@@ -1,16 +1,23 @@
 package ar.edu.unq.spacesuits
 
-class LightSpaceSuitSpec extends SpaceSuitSpec {
+import ar.edu.unq.utils.BaseSpec
 
-  val suit = new LightSpaceSuit
-  suit.oxygen shouldBe 1500
+// Consumes 15% of the kms walked with a max of 10 units
+trait LightSpaceSuitSpec extends BaseSpec {
 
-  "A ligth space suit" should "walk 60 kms and decreases oxygen by 9 units" in {
+  "A ligth space suit" should "have 1500 units of oxygen" in {
+    val suit = new LightSpaceSuit
+    suit.oxygen shouldBe 1500
+  }
+
+  it should "decreases in 9 units of oxygen when walking for 60 kms" in {
+    val suit = new LightSpaceSuit
     suit walk 60
     suit.oxygen shouldBe 1491
   }
 
-  "A ligth space suit" should "walk 100 kms and decreases oxygen by 10 units" in {
+  it should "decreases in 10 units of oxygen when walking for 100 kms" in {
+    val suit = new LightSpaceSuit
     suit walk 100
     suit.oxygen shouldBe 1490
   }

@@ -1,7 +1,6 @@
 package ar.edu.unq.bags
 
 import ar.edu.unq.items.Item
-
 import scala.collection.mutable.ListBuffer
 
 abstract class Bag {
@@ -14,20 +13,18 @@ abstract class Bag {
 
   def store(item: Item)    = if (this canStore item) items += item
   def canStore(item: Item) = freeSpace >= item.volume && freeWeight >= item.mass * gravity
-  def contains(item: Item) = items contains item
 
-  def clear()    = items.clear
   def energy     = items.foldLeft(0.0){ (acc, item) => acc + item.energy }
   def freeSpace  = volume - occupiedSpace
   def freeWeight = weight - occupiedWeight
 
   def absorb(damage: Double): Double = damage
   def receiveHit(damage: Double) = {
-    items.foreach { item => item.receiveHit(this absorb damage) }
+    items foreach { item => item receiveHit (this absorb damage) }
   }
 
   def hasFuelFor(seconds: Int): Boolean = false
-  def consume(time: Int) {}
+  def consumeFuelFor(time: Int) {}
 
   def occupiedWeight = items.foldLeft(0.0) { (acc, item) => acc + item.mass * gravity }
   protected def occupiedSpace  = items.foldLeft(0) { (acc, item) => acc + item.volume }
