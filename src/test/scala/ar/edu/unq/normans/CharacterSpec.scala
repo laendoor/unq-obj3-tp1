@@ -37,21 +37,16 @@ trait CharacterBagsSpec extends BaseSpec {
 
   "A character with propulsion bag with 1000 units of fuel" should "ascends for 6 seconds and reach altitude of 3 meters" in {
     val miles = new Character
-    miles.bag = new SmallBag with PropulsionBag {
-      override var fuel: Double = 1000
-    }
+    miles.bag = new SmallBag with PropulsionBag
+    miles.bag.fuel = 1000
     miles ascend 6
-
     miles.altitude shouldBe 3
   }
 
   "A character with propulsion bag with no fuel" should "ascends for 6 seconds and reach an altitude of 0 meters" in {
     val miles = new Character
-    miles.bag = new SmallBag with PropulsionBag {
-      override var fuel: Double = 0
-    }
+    miles.bag = new SmallBag with PropulsionBag
     miles ascend 6
-
     miles.altitude shouldBe 0
   }
 

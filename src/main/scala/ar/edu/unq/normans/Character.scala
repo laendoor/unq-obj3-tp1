@@ -29,12 +29,15 @@ class Character {
   }
 
   def ascend(time: Int): Unit = {
-    for (t <- 1 to time) {
-      if (bag hasFuelFor 1) {
-        altitude += 0.5
-        bag consumeFuelFor 1
-      }
-    }
+    val ascendingTime = Math.min(time, bag.propulsionTime)
+    bag consumeFuelFor ascendingTime
+    altitude += ascendingTime / 2
+//    for (t <- 1 to time) {
+//      if (bag hasFuelFor 1) {
+//        altitude += 0.5
+//        bag consumeFuelFor 1
+//      }
+//    }
   }
 
   def walk(kms: Int): Unit = {
