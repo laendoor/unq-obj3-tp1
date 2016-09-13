@@ -1,7 +1,7 @@
 package ar.edu.unq.bags.resistance
 
 import ar.edu.unq.bags.SmallBag
-import ar.edu.unq.damage.resistance.SemiRigidResistance
+import ar.edu.unq.damage.SemiRigidResistance
 import ar.edu.unq.items.Rock
 import ar.edu.unq.utils.BaseSpec
 

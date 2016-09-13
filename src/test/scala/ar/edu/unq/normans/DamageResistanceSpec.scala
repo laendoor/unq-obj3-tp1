@@ -3,7 +3,7 @@ package ar.edu.unq.normans
 import ar.edu.unq.suits.{RigidResistanceSuit, SemiRigidResistanceSuit, Suit}
 import ar.edu.unq.utils.BaseSpec
 
-trait FightingSpec extends BaseSpec {
+trait DamageResistanceSpec extends BaseSpec {
 
   "A character with 200 of energy and a regular suit that receives damage by 100" should "have 100 of energy" in {
     val miles  = Character(energy = 200, new Suit)

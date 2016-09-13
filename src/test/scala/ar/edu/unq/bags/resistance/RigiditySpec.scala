@@ -3,7 +3,7 @@ package ar.edu.unq.bags.resistance
 import ar.edu.unq.items.Rock
 import ar.edu.unq.utils.BaseSpec
 import ar.edu.unq.bags.SmallBag
-import ar.edu.unq.damage.resistance.RigidResistance
+import ar.edu.unq.damage.RigidResistance
 
 trait RigiditySpec extends BaseSpec {
 

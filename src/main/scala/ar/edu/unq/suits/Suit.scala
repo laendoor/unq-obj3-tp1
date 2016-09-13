@@ -1,6 +1,7 @@
 package ar.edu.unq.suits
 
-import ar.edu.unq.damage.resistance.{NonResistance, RigidResistance, SemiRigidResistance}
+import ar.edu.unq.damage.{NonResistance, RigidResistance, SemiRigidResistance}
+import ar.edu.unq.damage.resistance.{RigidResistance, SemiRigidResistance}
 
 class Suit extends LightSuit with NonResistance {
 
