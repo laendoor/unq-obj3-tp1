@@ -2,12 +2,12 @@ package ar.edu.unq.normans
 
 import ar.edu.unq.bags.Bag
 import ar.edu.unq.items.Item
-import ar.edu.unq.spacesuits.SpaceSuit
+import ar.edu.unq.suits.Suit
 
 class Character {
 
   var bag: Bag = _
-  var suit: SpaceSuit = _
+  var suit: Suit = _
   var energy: Double = 0
   var altitude: Double = 0.0
 

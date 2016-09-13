@@ -1,6 +1,6 @@
-package ar.edu.unq.spacesuits
+package ar.edu.unq.suits
 
-abstract class SpaceSuit {
+abstract class Suit {
   var oxygen: Double
 
   def walkConsume(kms: Int): Double
@@ -11,12 +11,12 @@ abstract class SpaceSuit {
   }
 }
 
-class LightSpaceSuit extends SpaceSuit {
+class LightSuit extends Suit {
   var oxygen = 1500.0
   override def walkConsume(kms: Int) = Math.min(10, kms * 0.15)
 }
 
-class HeavySpaceSuit extends SpaceSuit {
+class HeavySuit extends Suit {
   var oxygen = 4000.0
   override def walkConsume(kms: Int) = kms * 0.20 - 10.0
 }
