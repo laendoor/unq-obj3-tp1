@@ -2,7 +2,7 @@ package ar.edu.unq.normans
 
 import ar.edu.unq.bags.{PropulsionBag, SmallBag}
 import ar.edu.unq.items.Rock
-import ar.edu.unq.spacesuits.HeavySpaceSuit
+import ar.edu.unq.suits.{HeavySuit, Suit}
 import ar.edu.unq.utils.BaseSpec
 
 trait MovementsSpec extends BaseSpec {
@@ -24,7 +24,7 @@ trait MovementsSpec extends BaseSpec {
   "A character on earth with heavy suit and small bag with a rock of 2kg of mass" should "walk for 2 kms and consume about 18.1 units of oxygen" in {
     val miles  = new Character
     miles.bag  = new SmallBag
-    miles.suit = new HeavySpaceSuit
+    miles.suit = new Suit with HeavySuit
     miles.bag store new Rock(volume = 1000, mass = 2)
 
     miles walk 2
