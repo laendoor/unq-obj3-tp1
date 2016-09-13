@@ -51,4 +51,13 @@ trait Duplicators extends Attack{
 
 }
 
-trait Enhancers extends Attack{}
+trait Enhancers extends Attack {
+
+  val incrementdamage: Double = 0.0
+  override def powerAttack: Double = super.powerAttack + incrementdamage
+}
+
+trait Cancellers extends Attack{
+
+  override def powerAttack: Double = 0.0
+}

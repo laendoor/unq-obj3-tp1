@@ -1,7 +1,7 @@
 package ar.edu.unq.normans
 
 import ar.edu.unq.bags.SmallBag
-import ar.edu.unq.damage.{Duplicators, FireGun, Laser, RareWeapon}
+import ar.edu.unq.damage._
 import ar.edu.unq.suits.Suit
 import ar.edu.unq.utils.BaseSpec
 
@@ -54,7 +54,7 @@ trait AttackSpec extends BaseSpec {
   }
 
 
-  it should " " in{
+  it should "have 186 points of energy after attack when blue-character have a rare weapon   and Duplicators with 6 points of power attack " in{
 
     val red  = Character(energy = 200)
     val blue = new Character with RareWeapon with Duplicators {
@@ -71,4 +71,38 @@ trait AttackSpec extends BaseSpec {
     blue.energy shouldBe 94
   }
 
+  it should "have 191 points of energy after attack when blue-character have a rare weapon   and Enhancers with 6 points of power attack " in{
+
+    val red  = Character(energy = 200)
+    val blue = new Character with RareWeapon with Enhancers {
+      override val damage = 6.0
+      override val incrementdamage = 2.0
+      bag  = new SmallBag
+      suit = new Suit
+      energy = 100
+      powerAttack = 1.0
+    }
+
+    blue.powerAttack shouldBe 9
+    blue attack red
+    red.energy shouldBe 191
+    blue.energy shouldBe 94
+  }
+
+  it should "have 200 points of energy after attack when blue add  mixin Cancellers character have a fire gun with 1 bullet" in {
+
+    val red  = Character(energy = 200)
+    val blue = new Character with FireGun with Cancellers{
+      bag  = new SmallBag
+      suit = new Suit
+      bullets = 1
+      powerAttack = 1.0
+    }
+
+    blue.powerAttack shouldBe 0
+    blue attack red
+    red.energy shouldBe 200
+
+
+  }
 }
