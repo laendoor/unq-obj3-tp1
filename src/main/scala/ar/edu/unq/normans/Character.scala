@@ -1,6 +1,6 @@
 package ar.edu.unq.normans
 
-import ar.edu.unq.bags.Bag
+import ar.edu.unq.bags.{Bag, SmallBag}
 import ar.edu.unq.items.Item
 import ar.edu.unq.suits.Suit
 
@@ -24,24 +24,29 @@ class Character {
   def oxygen: Double = suit.oxygen
 
   def receiveHit(damage: Double): Unit = {
-    energy = Math.max(0, energy - damage)
-    bag receiveHit damage
+    val effectiveDamage = suit absorb damage
+    energy = Math.max(0, energy - effectiveDamage)
+    bag receiveHit effectiveDamage
   }
 
   def ascend(time: Int): Unit = {
     val ascendingTime = Math.min(time, bag.propulsionTime)
     bag consumeFuelFor ascendingTime
     altitude += ascendingTime / 2
-//    for (t <- 1 to time) {
-//      if (bag hasFuelFor 1) {
-//        altitude += 0.5
-//        bag consumeFuelFor 1
-//      }
-//    }
   }
 
   def walk(kms: Int): Unit = {
     suit walk (kms, bag.occupiedWeight)
   }
 
+}
+
+object Character {
+  def apply(energy: Int, suit: Suit): Character = {
+    val c = new Character
+    c.bag    = new SmallBag
+    c.suit   = suit
+    c.energy = energy
+    c
+  }
 }

@@ -5,7 +5,7 @@ import ar.edu.unq.utils.BaseSpec
 // Consumes 20% of the kms walked and generates 10 units in every walk
 trait HeavySuitSpec extends BaseSpec {
 
-  "A heavy space suit" should "have 4000 units of oxygen" in {
+  "A heavy suit" should "have 4000 units of oxygen" in {
     val suit = new Suit with HeavySuit
     suit.oxygen shouldBe 4000
   }

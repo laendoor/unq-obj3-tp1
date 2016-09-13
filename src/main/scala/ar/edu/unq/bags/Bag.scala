@@ -1,9 +1,11 @@
 package ar.edu.unq.bags
 
+import ar.edu.unq.damage.resistance.NonResistance
 import ar.edu.unq.items.Item
+
 import scala.collection.mutable.ListBuffer
 
-abstract class Bag extends NonRigidity with NoPropulsionBag {
+abstract class Bag extends NonResistance with NoPropulsionBag {
 
   val volume: Int
   val weight: Int

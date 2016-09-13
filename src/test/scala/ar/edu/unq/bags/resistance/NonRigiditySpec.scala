@@ -1,6 +1,6 @@
 package ar.edu.unq.bags.resistance
 
-import ar.edu.unq.bags.{NonRigidity, SmallBag}
+import ar.edu.unq.bags.SmallBag
 import ar.edu.unq.items.Rock
 import ar.edu.unq.utils.BaseSpec
 
