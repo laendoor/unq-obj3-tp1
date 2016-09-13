@@ -1,7 +1,7 @@
 package ar.edu.unq.normans
 
 import ar.edu.unq.bags.SmallBag
-import ar.edu.unq.damage.{FireGun, Laser, RareWeapon}
+import ar.edu.unq.damage.{Duplicators, FireGun, Laser, RareWeapon}
 import ar.edu.unq.suits.Suit
 import ar.edu.unq.utils.BaseSpec
 
@@ -50,6 +50,24 @@ trait AttackSpec extends BaseSpec {
     blue.powerAttack shouldBe 7
     blue attack red
     red.energy shouldBe 193
+    blue.energy shouldBe 94
+  }
+
+
+  it should " " in{
+
+    val red  = Character(energy = 200)
+    val blue = new Character with RareWeapon with Duplicators {
+      override val damage = 6.0
+      bag  = new SmallBag
+      suit = new Suit
+      energy = 100
+      powerAttack = 1.0
+    }
+
+    blue.powerAttack shouldBe 14
+    blue attack red
+    red.energy shouldBe 186
     blue.energy shouldBe 94
   }
 

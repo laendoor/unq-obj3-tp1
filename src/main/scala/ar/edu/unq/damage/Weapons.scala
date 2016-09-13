@@ -44,3 +44,11 @@ trait RareWeapon extends Attack {
     energy = Math.max(0, energy - damage)
   }
 }
+
+trait Duplicators extends Attack{
+
+  override def powerAttack: Double = super.powerAttack * 2
+
+}
+
+trait Enhancers extends Attack{}
