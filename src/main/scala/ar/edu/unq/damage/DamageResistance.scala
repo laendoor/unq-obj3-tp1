@@ -1,4 +1,4 @@
-package ar.edu.unq.damage.resistance
+package ar.edu.unq.damage
 
 trait NonResistance {
   val absorption: Double = 0.0

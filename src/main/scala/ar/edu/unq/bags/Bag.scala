@@ -1,6 +1,6 @@
 package ar.edu.unq.bags
 
-import ar.edu.unq.damage.resistance.NonResistance
+import ar.edu.unq.damage.NonResistance
 import ar.edu.unq.items.Item
 
 import scala.collection.mutable.ListBuffer

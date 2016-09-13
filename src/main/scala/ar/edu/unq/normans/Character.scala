@@ -42,6 +42,11 @@ class Character {
 }
 
 object Character {
+
+  def apply(energy: Int): Character = {
+    apply(energy, new Suit)
+  }
+
   def apply(energy: Int, suit: Suit): Character = {
     val c = new Character
     c.bag    = new SmallBag
