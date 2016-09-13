@@ -7,3 +7,4 @@ class CharacterSpec extends BaseSpec
  with MovementsSpec
  with DamageResistanceSpec
  with DamageResponseSpec
+ with AttackSpec
