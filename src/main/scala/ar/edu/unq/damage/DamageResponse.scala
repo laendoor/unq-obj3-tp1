@@ -33,6 +33,7 @@ trait ReflectionDamage extends Character {
   var reflection: Double = 0.0
   override def receiveHit(damage: Double): Unit = {
     val damageToReflect = damage * reflection
+
     // FIXME implementar crecimiento del poder de ataque
     super.receiveHit(damage)
   }
@@ -43,11 +44,12 @@ trait ReflectionDamage extends Character {
 // puntos de daño y tenemos una capacidad de absorción de 0.15,
 // entonces vamos a generar un incremento de 20 * 0.15 puntos
 // de poder de ataque (ver siguiente punto sobre ataque)
-trait DamageAbsorption extends Character {
-  var absorption: Double = 0.0
+trait DamageAbsorption extends Character with Attack {
+
+  val absorption: Double = 0.0 // ej 15% = 0.15
+
   override def receiveHit(damage: Double): Unit = {
-    // val attackPower += damage * absorption
-    // FIXME implementar crecimiento del poder de ataque
+    powerAttack += damage * absorption
     super.receiveHit(damage)
   }
 }

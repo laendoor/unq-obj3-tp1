@@ -56,4 +56,6 @@ trait DamageResistanceSpec extends BaseSpec {
     miles walk 2
     miles.absorption shouldBe 40
   }
+
+
 }
