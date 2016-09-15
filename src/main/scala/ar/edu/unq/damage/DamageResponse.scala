@@ -5,10 +5,10 @@ import ar.edu.unq.normans.Character
 trait Shield extends Character {
   var absorption: Double = 0.0
 
-  override def receiveHit(damage: Double): Unit = {
+  override def receiveHit(damage: Double,other: Character): Unit = {
     val effectiveDamage = this absorb damage
     absorption = Math.max(0, absorption - damage)
-    super.receiveHit(effectiveDamage)
+    super.receiveHit(effectiveDamage,other)
   }
 
   def absorb(damage: Double) = Math.max(0, damage - absorption)
@@ -29,22 +29,14 @@ trait RechargeableShield extends Shield {
 // ataque normal, con lo cual si el atacante
 // también tiene escudo o alguna otra
 // característica se tendrá en cuenta).
-trait ReflectionDamage extends Character with Attack{
+trait ReflectionDamage extends Character{
 
   val reflection: Double = 0.0
- // private  var damageToReflect: Double = 0.0
 
- // override def powerAttack =  damageToReflect//super.powerAttack
-/*
-  override def attack(other: Character): Unit = {
-    super.attack(other)
-  }
-*/
   override def receiveHit(damage: Double,other: Character): Unit = {
      val damageToReflect = damage * reflection
-    other.receiveHit(damageToReflect)
-
-    super.receiveHit(damage)
+     other.receiveHit(damageToReflect,other)
+     super.receiveHit(damage,other)
   }
 }
 
@@ -57,8 +49,8 @@ trait DamageAbsorption extends Character with Attack {
 
   val absorption: Double = 0.0 // ej 15% = 0.15
 
-  override def receiveHit(damage: Double): Unit = {
+  override def receiveHit(damage: Double,other: Character): Unit = {
     powerAttack += damage * absorption
-    super.receiveHit(damage)
+    super.receiveHit(damage,other)
   }
 }

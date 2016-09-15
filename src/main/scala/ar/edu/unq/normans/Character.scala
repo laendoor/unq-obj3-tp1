@@ -23,14 +23,12 @@ class Character {
   def freeSpace: Int = bag.freeSpace
   def oxygen: Double = suit.oxygen
 
-  def receiveHit(damage: Double): Unit = {
+  def receiveHit(damage: Double, other: Character): Unit = {
     val effectiveDamage = suit absorb damage
     energy = Math.max(0, energy - effectiveDamage)
-    bag receiveHit effectiveDamage
+    bag.receiveHit(effectiveDamage)
   }
 
-  //agregue este metodo para q lo redifina reflector de daño
-  def receiveHit(damage: Double,character: Character): Unit = {}
 
 
   def ascend(time: Int): Unit = {

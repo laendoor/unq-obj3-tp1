@@ -7,7 +7,7 @@ trait Attack extends Character {
   def powerAttack = _powerAttack
   def powerAttack_= (power: Double) = _powerAttack = power
   def attack(other: Character): Unit = {
-    other.receiveHit(powerAttack)
+    other.receiveHit(powerAttack,this)
   }
 }
 
