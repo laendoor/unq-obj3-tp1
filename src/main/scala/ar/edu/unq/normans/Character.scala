@@ -1,6 +1,6 @@
 package ar.edu.unq.normans
 
-import ar.edu.unq.bags.{Bag, SmallBag}
+import ar.edu.unq.bags.{Bag, SmallSize}
 import ar.edu.unq.items.Item
 import ar.edu.unq.suits.Suit
 
@@ -20,7 +20,7 @@ class Character {
 
   def store(item: Item): Unit = bag store item
   def canStore(item: Item): Boolean = bag canStore item
-  def freeSpace: Int = bag.freeSpace
+  def freeSpace: Double = bag.freeSpace
   def oxygen: Double = suit.oxygen
 
   def receiveHit(damage: Double): Unit = {
@@ -49,7 +49,7 @@ object Character {
 
   def apply(energy: Int, suit: Suit): Character = {
     val c = new Character
-    c.bag    = new SmallBag
+    c.bag    = new Bag
     c.suit   = suit
     c.energy = energy
     c
