@@ -7,24 +7,26 @@ import ar.edu.unq.utils.BaseSpec
 
 trait MovementsSpec extends BaseSpec {
   "A character with propulsion bag with 1000 units of fuel" should "ascends for 6 seconds and reach altitude of 3 meters" in {
-    val miles = new Character
-    miles.bag = new Bag with Propulsion
-    miles.bag.fuel = 1000
+    val miles = new Character {
+      bag = new Bag with Propulsion { fuel = 1000 }
+    }
     miles ascend 6
     miles.altitude shouldBe 3
   }
 
   "A character with propulsion bag with no fuel" should "ascends for 6 seconds and reach an altitude of 0 meters" in {
-    val miles = new Character
-    miles.bag = new Bag with Propulsion
+    val miles = new Character {
+      bag = new Bag with Propulsion
+    }
     miles ascend 6
     miles.altitude shouldBe 0
   }
 
   "A character on earth with heavy suit and small bag with a rock of 2kg of mass" should "walk for 2 kms and consume about 18.1 units of oxygen" in {
-    val miles  = new Character
-    miles.bag  = new Bag
-    miles.suit = new Suit with HeavySuit
+    val miles  = new Character {
+      bag  = new Bag
+      suit = new Suit with HeavySuit
+    }
     miles.bag store new Rock(volume = 1000, mass = 2)
 
     miles walk 2

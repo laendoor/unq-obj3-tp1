@@ -1,8 +1,6 @@
 package ar.edu.unq.normans
 
-import ar.edu.unq.bags.Bag
 import ar.edu.unq.damage._
-import ar.edu.unq.suits.Suit
 import ar.edu.unq.utils.BaseSpec
 
 trait AttackSpec extends BaseSpec {
@@ -10,8 +8,6 @@ trait AttackSpec extends BaseSpec {
   "A red-character with 200 points of energy that is attacked from a blue-character with 1 point of power attack" should "have 189 points of energy after attack when blue-character have a laser gun" in {
     val red  = Character(energy = 200)
     val blue = new Character with Laser {
-      bag    = new Bag
-      suit   = new Suit
       powerAttack = 1.0
     }
 
@@ -24,8 +20,6 @@ trait AttackSpec extends BaseSpec {
   it should "have 196 points of energy after attack when blue-character have a fire gun with 1 bullet" in {
     val red  = Character(energy = 200)
     val blue = new Character with FireGun {
-      bag  = new Bag
-      suit = new Suit
       bullets = 1
       powerAttack = 1.0
     }
@@ -41,8 +35,6 @@ trait AttackSpec extends BaseSpec {
     val red  = Character(energy = 200)
     val blue = new Character with RareWeapon {
       override val damage = 6.0
-      bag  = new Bag
-      suit = new Suit
       energy = 100
       powerAttack = 1.0
     }
@@ -59,8 +51,6 @@ trait AttackSpec extends BaseSpec {
     val red  = Character(energy = 200)
     val blue = new Character with RareWeapon with Duplicators {
       override val damage = 6.0
-      bag  = new Bag
-      suit = new Suit
       energy = 100
       powerAttack = 1.0
     }
@@ -77,8 +67,6 @@ trait AttackSpec extends BaseSpec {
     val blue = new Character with RareWeapon with Enhancers {
       override val damage = 6.0
       override val incrementdamage = 2.0
-      bag  = new Bag
-      suit = new Suit
       energy = 100
       powerAttack = 1.0
     }
@@ -93,16 +81,12 @@ trait AttackSpec extends BaseSpec {
 
     // poder de ataque = 4
     val red  = new Character with FireGun {
-      bag  = new Bag
-      suit = new Suit
       energy = 200
       bullets = 1
       powerAttack = 1.0
     }
 
     val blue = new Character with DamageAbsorption {
-      bag  = new Bag
-      suit = new Suit
       override val absorption: Double = 0.5
       powerAttack = 1.0
     }
