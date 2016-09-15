@@ -1,6 +1,7 @@
 package ar.edu.unq.normans
 
 import ar.edu.unq.bags.{Bag, SmallBag}
+import ar.edu.unq.damage.Attack
 import ar.edu.unq.items.Item
 import ar.edu.unq.suits.Suit
 
@@ -41,6 +42,7 @@ class Character {
     suit walk (kms, bag.occupiedWeight)
   }
 
+  def attack(character: Character){}
 }
 
 object Character {
