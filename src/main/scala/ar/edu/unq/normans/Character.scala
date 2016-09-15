@@ -23,11 +23,13 @@ class Character {
   def freeSpace: Double = bag.freeSpace
   def oxygen: Double = suit.oxygen
 
-  def receiveHit(damage: Double): Unit = {
+  def receiveHit(damage: Double, other: Character): Unit = {
     val effectiveDamage = suit absorb damage
     energy = Math.max(0, energy - effectiveDamage)
-    bag receiveHit effectiveDamage
+    bag.receiveHit(effectiveDamage)
   }
+
+
 
   def ascend(time: Int): Unit = {
     val ascendingTime = Math.min(time, bag.propulsionTime)
