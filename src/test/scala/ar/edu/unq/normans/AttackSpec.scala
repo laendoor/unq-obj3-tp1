@@ -91,7 +91,7 @@ trait AttackSpec extends BaseSpec {
 
   it should " prueba" in {
 
-    // poder de ataque = 4
+
     val red  = new Character with FireGun {
       bag  = new SmallBag
       suit = new Suit
@@ -112,6 +112,30 @@ trait AttackSpec extends BaseSpec {
     red attack blue
     blue.powerAttack shouldBe 3
   }
+
+  it should " prueba 2" in {
+
+
+    val red  = new Character with FireGun {
+      bag  = new SmallBag
+      suit = new Suit
+      energy = 200
+      bullets = 1
+      powerAttack = 1.0
+    }
+
+    val blue = new Character with ReflectionDamage {
+      bag  = new SmallBag
+      suit = new Suit
+      override val reflection = 0.5
+      powerAttack = 1.0
+    }
+
+    blue.powerAttack shouldBe 1
+    red attack blue
+    red.energy shouldBe(200)
+  }
+
 
 
 }

@@ -29,6 +29,10 @@ class Character {
     bag receiveHit effectiveDamage
   }
 
+  //agregue este metodo para q lo redifina reflector de daño
+  def receiveHit(damage: Double,character: Character): Unit = {}
+
+
   def ascend(time: Int): Unit = {
     val ascendingTime = Math.min(time, bag.propulsionTime)
     bag consumeFuelFor ascendingTime

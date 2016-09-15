@@ -29,12 +29,21 @@ trait RechargeableShield extends Shield {
 // ataque normal, con lo cual si el atacante
 // también tiene escudo o alguna otra
 // característica se tendrá en cuenta).
-trait ReflectionDamage extends Character {
-  var reflection: Double = 0.0
-  override def receiveHit(damage: Double): Unit = {
-    val damageToReflect = damage * reflection
+trait ReflectionDamage extends Character with Attack{
 
-    // FIXME implementar crecimiento del poder de ataque
+  val reflection: Double = 0.0
+ // private  var damageToReflect: Double = 0.0
+
+ // override def powerAttack =  damageToReflect//super.powerAttack
+/*
+  override def attack(other: Character): Unit = {
+    super.attack(other)
+  }
+*/
+  override def receiveHit(damage: Double,other: Character): Unit = {
+     val damageToReflect = damage * reflection
+    other.receiveHit(damageToReflect)
+
     super.receiveHit(damage)
   }
 }
