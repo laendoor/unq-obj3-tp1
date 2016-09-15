@@ -46,10 +46,10 @@ trait AttackSpec extends BaseSpec {
   }
 
 
-  it should "have 186 points of energy after attack when blue-character have a rare weapon   and Duplicators with 6 points of power attack " in{
+  it should "have 186 points of energy after attack when blue-character have a rare weapon with 6 points of power attack with duplicator" in{
 
     val red  = Character(energy = 200)
-    val blue = new Character with RareWeapon with Duplicators {
+    val blue = new Character with RareWeapon with Duplicator {
       override val damage = 6.0
       energy = 100
       powerAttack = 1.0
@@ -61,12 +61,12 @@ trait AttackSpec extends BaseSpec {
     blue.energy shouldBe 94
   }
 
-  it should "have 191 points of energy after attack when blue-character have a rare weapon   and Enhancers with 6 points of power attack " in{
+  it should "have 191 points of energy after attack when blue-character have a rare weapon with 6 points of power attack with enhancer of 2 points" in{
 
     val red  = Character(energy = 200)
-    val blue = new Character with RareWeapon with Enhancers {
+    val blue = new Character with RareWeapon with Enhancer {
       override val damage = 6.0
-      override val incrementdamage = 2.0
+      override val enhancedPower = 2.0
       energy = 100
       powerAttack = 1.0
     }
@@ -77,8 +77,21 @@ trait AttackSpec extends BaseSpec {
     blue.energy shouldBe 94
   }
 
-  it should " 3-point energy after an attack red character - character blue has a DamageAbsorption with an absorption of 0.5" in {
+  it should "have 200 points of energy after attack when blue-character have a canceller" in{
 
+    val red  = Character(energy = 200)
+    val blue = new Character with RareWeapon with Canceller {
+      override val damage = 6.0
+      energy = 100
+      powerAttack = 1.0
+    }
+
+    blue.powerAttack shouldBe 0
+    blue attack red
+    red.energy shouldBe 200
+  }
+
+  it should "have 3-point energy after an attack red character - character blue has a DamageAbsorption with an absorption of 0.5" in {
 
     val red  = new Character with FireGun {
       energy = 200
@@ -97,30 +110,22 @@ trait AttackSpec extends BaseSpec {
     blue.powerAttack shouldBe 3
   }
 
-  it should "198 energy points after an attack blue - blue has a character with a reflection ReflectionDamage 0.5" in {
-
+  it should "have 198 energy points after an attack blue - blue has a character with a reflection ReflectionDamage 0.5" in {
 
     val red  = new Character with FireGun {
-      bag  = new SmallBag
-      suit = new Suit
       energy = 200
       bullets = 1
       powerAttack = 1.0
     }
 
     val blue = new Character with ReflectionDamage {
-      bag  = new SmallBag
-      suit = new Suit
       override val reflection = 0.5
-
-
     }
 
     red.powerAttack shouldBe 4
     red attack blue
 
-    red.energy shouldBe(198)
-
+    red.energy shouldBe 198
   }
 
 

@@ -45,19 +45,19 @@ trait RareWeapon extends Attack {
   }
 }
 
-trait Duplicators extends Attack{
+/**
+  * Attack Modifiers
+  */
 
+trait Duplicator extends Attack {
   override def powerAttack: Double = super.powerAttack * 2
-
 }
 
-trait Enhancers extends Attack {
-
-  val incrementdamage: Double = 0.0
-  override def powerAttack: Double = super.powerAttack + incrementdamage
+trait Enhancer extends Attack {
+  val enhancedPower: Double = 0.0
+  override def powerAttack: Double = super.powerAttack + enhancedPower
 }
 
-trait Cancellers extends Attack{
-
+trait Canceller extends Attack {
   override def powerAttack: Double = 0.0
 }
