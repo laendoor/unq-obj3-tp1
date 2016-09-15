@@ -29,7 +29,7 @@ trait RechargeableShield extends Shield {
 // ataque normal, con lo cual si el atacante
 // también tiene escudo o alguna otra
 // característica se tendrá en cuenta).
-trait ReflectionDamage extends Character with Attack{
+trait ReflectionDamage extends Attack {
 
   val reflection: Double = 0.0
  // private  var damageToReflect: Double = 0.0

@@ -131,9 +131,9 @@ trait AttackSpec extends BaseSpec {
       powerAttack = 1.0
     }
 
-    blue.powerAttack shouldBe 1
+    red.powerAttack shouldBe 4
     red attack blue
-    red.energy shouldBe(200)
+    red.energy shouldBe 198
   }
 
 
