@@ -6,8 +6,8 @@ import ar.edu.unq.suits.Suit
 
 class Character {
 
-  var bag: Bag = _
-  var suit: Suit = _
+  var bag: Bag = new Bag
+  var suit: Suit = new Suit
   var energy: Double = 0
   var altitude: Double = 0.0
 

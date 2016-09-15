@@ -43,8 +43,6 @@ trait DamageResistanceSpec extends BaseSpec {
 
   "A character with 200 of energy and a rechargeable shield with 80 points of damage absorption that receives damage by 60 and then walk 2 kms" should "have 200 of energy and 40 points of damage absorption in shield" in {
     val miles = new Character with RechargeableShield {
-      bag    = new Bag
-      suit   = new Suit
       energy = 200
       absorption = 80.0
     }
