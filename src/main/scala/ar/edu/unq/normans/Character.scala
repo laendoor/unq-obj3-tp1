@@ -1,14 +1,16 @@
 package ar.edu.unq.normans
 
-import ar.edu.unq.bags.{Bag, SmallSize}
+import ar.edu.unq.bags.Bag
+import ar.edu.unq.damage.PowerAttack
 import ar.edu.unq.items.Item
 import ar.edu.unq.suits.Suit
 
-class Character {
+class Character extends PowerAttack {
 
   var bag: Bag = new Bag
   var suit: Suit = new Suit
   var energy: Double = 0
+  var fatigue: Double = 0
   var altitude: Double = 0.0
 
   private var _gravity: Double = 9.8 // m/s^2, default on earth
@@ -29,16 +31,21 @@ class Character {
     bag.receiveHit(effectiveDamage)
   }
 
+  override def attack(other: Character): Unit = {
+    other.receiveHit(powerAttack,this)
+  }
 
-
+  // FIXME? lo podria hacer directamente la propulsion y llevarse el attr altitude
   def ascend(time: Int): Unit = {
     val ascendingTime = Math.min(time, bag.propulsionTime)
     bag consumeFuelFor ascendingTime
     altitude += ascendingTime / 2
   }
 
+  /** Walking affects the Suit and generates fatigue */
   def walk(kms: Int): Unit = {
-    suit walk (kms, bag.occupiedWeight)
+    suit walk (kms, bag.weight)
+    fatigue += 0.5 * (kms + bag.weight)
   }
 
 }

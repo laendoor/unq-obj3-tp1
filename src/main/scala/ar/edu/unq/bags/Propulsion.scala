@@ -8,8 +8,8 @@ trait NoPropulsion {
 }
 
 trait Propulsion extends Bag {
-  override def propulsionTime: Int = (fuel / occupiedWeight).floor.toInt
+  override def propulsionTime: Int = (fuel / weight).floor.toInt
   override def consumeFuelFor(time: Int) = {
-    fuel = Math.max(0, fuel - time * occupiedWeight)
+    fuel = Math.max(0, fuel - time * weight)
   }
 }
