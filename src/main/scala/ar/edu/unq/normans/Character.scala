@@ -11,38 +11,38 @@ class Character extends PowerAttack {
   var suit: Suit = new Suit
   var energy: Double = 0
   var fatigue: Double = 0
-  var altitude: Double = 0.0
 
-  private var _gravity: Double = 9.8 // m/s^2, default on earth
-  def gravity = _gravity
-  def gravity_= (grav: Double):Unit = {
-    _gravity = grav
-    bag.gravity = grav
+  /** Oxygen & Gravity depends on Suit */
+  def oxygen: Double = suit.oxygen
+  def gravity = bag.gravity
+  def gravity_= (gravity: Double): Unit = {
+    bag.gravity = gravity
   }
 
+  /** Storing depends on Bag */
   def store(item: Item): Unit = bag store item
   def canStore(item: Item): Boolean = bag canStore item
   def freeSpace: Double = bag.freeSpace
-  def oxygen: Double = suit.oxygen
 
+  /** Space moves depends on Bag */
+  def altitude = bag.altitude
+  def ascend(time: Int): Unit = {
+    bag ascend time
+  }
+
+  /** Under attack */
   def receiveHit(damage: Double, other: Character): Unit = {
     val effectiveDamage = suit absorb damage
+    bag receiveHit effectiveDamage
     energy = Math.max(0, energy - effectiveDamage)
-    bag.receiveHit(effectiveDamage)
   }
 
+  /** Dale duro otto */
   override def attack(other: Character): Unit = {
-    other.receiveHit(powerAttack,this)
+    other.receiveHit(powerAttack, this)
   }
 
-  // FIXME? lo podria hacer directamente la propulsion y llevarse el attr altitude
-  def ascend(time: Int): Unit = {
-    val ascendingTime = Math.min(time, bag.propulsionTime)
-    bag consumeFuelFor ascendingTime
-    altitude += ascendingTime / 2
-  }
-
-  /** Walking affects the Suit and generates fatigue */
+  /** Walking affects Suit and generates fatigue */
   def walk(kms: Int): Unit = {
     suit walk (kms, bag.weight)
     fatigue += 0.5 * (kms + bag.weight)
@@ -50,6 +50,9 @@ class Character extends PowerAttack {
 
 }
 
+/**
+  * Companion Object is used to write short & descriptive test
+  */
 object Character {
 
   def apply(energy: Int): Character = {
