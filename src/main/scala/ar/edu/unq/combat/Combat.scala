@@ -4,7 +4,14 @@ import ar.edu.unq.normans.Character
 
 class Combat(white: Character, black: Character) {
 
-  def fight(): Unit = while (isNotOver) roundFight()
+  /** A fight gives 3 exp point to winner and 1 to looser */
+  def fight(): Unit = {
+    while (isNotOver) roundFight()
+
+    white.xp += 1
+    black.xp += 1
+    winner().xp += 2
+  }
 
   def roundFight(): Unit = {
     if (white.isAlive) white attack black
