@@ -6,7 +6,7 @@ trait Attack extends Character {
   private var _powerAttack: Double = 0.0
   def powerAttack = _powerAttack
   def powerAttack_= (power: Double) = _powerAttack = power
-  def attack(other: Character): Unit = {
+  override def attack(other: Character): Unit = {
     other.receiveHit(powerAttack,this)
   }
 }

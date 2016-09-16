@@ -3,14 +3,9 @@ package ar.edu.unq.combat
 import ar.edu.unq.damage.Attack
 import ar.edu.unq.normans.Character
 
-object Combat {
+trait Combat {
 
-//hacerlos combatir
-//retorna el ganador
-
-
-
-  def isLife(character: Character ): Boolean = {character.energy >= 0}
+  def isLife(character: Character ): Boolean = {character.energy > 0}
 
   def combat(character1: Character,character2: Character): Unit ={
 
