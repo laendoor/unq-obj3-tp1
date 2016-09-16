@@ -6,9 +6,9 @@ import ar.edu.unq.normans.Character
 import ar.edu.unq.suits.Suit
 import ar.edu.unq.utils.BaseSpec
 
-trait CombatTotalSpec extends BaseSpec with Combat{
+trait CombatTotalSpec extends BaseSpec {
 
-  "This test is to test a total attack" should "Where the winner is the red" in {
+  "This test is to test a total attack" should "Where the winner is the blue-character" in {
     val red  = new Character with Laser {
       energy = 200
       bag    = new SmallBag
@@ -22,10 +22,12 @@ trait CombatTotalSpec extends BaseSpec with Combat{
       powerAttack = 1.0
     }
 
-    this.ataqueTotal(blue,red) shouldEqual(red)
+    val combat = new Combat(blue, red)
+    combat.ataqueTotal
+    combat.winner shouldBe blue
   }
 
-  it should " This test is to test a total attack Where the winner is the Blue" in {
+  it should " This test is to test a total attack Where the winner is the red-character" in {
     val red  = new Character with Laser{
       energy = 200
       bag    = new SmallBag
@@ -39,9 +41,9 @@ trait CombatTotalSpec extends BaseSpec with Combat{
       powerAttack = 1.0
     }
 
-
-    this.ataqueTotal(red,blue) shouldEqual(blue)
-
+    val combat = new Combat(red, blue)
+    combat.ataqueTotal
+    combat.winner shouldBe red
   }
 
 }

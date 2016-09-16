@@ -1,32 +1,24 @@
 package ar.edu.unq.combat
 
-import ar.edu.unq.damage.Attack
 import ar.edu.unq.normans.Character
 
-trait Combat {
+class Combat(red: Character, blue: Character) {
 
-  def isLife(character: Character ): Boolean = {character.energy > 0}
+  def isLife(character: Character): Boolean = {character.energy > 0}
 
-  def combat(character1: Character,character2: Character): Unit ={
-
-    character1.attack(character2)
-    character2.attack(character1)
+  def combat(): Unit = {
+    blue.attack(red)
+    red.attack(blue)
   }
 
-  def winner(character1: Character,character2: Character): Character = {
-
-    if (isLife(character1)) {character1} else {character2}
-  }
-
-  def ataqueTotal(character1: Character , character2: Character): Character = {
-    var c1= character1
-    var c2= character2
-
-     while (this.isLife(c1) ||  this.isLife(c2)){
-
-         this.combat(c1,c2)
+  def ataqueTotal(): Unit = {
+     while (this.isLife(blue) ||  this.isLife(red)){
+         combat()
      }
-   this.winner(c1,c2)
+  }
+
+  def winner(): Character = {
+    if (isLife(blue)) {blue} else {red}
   }
 
 
