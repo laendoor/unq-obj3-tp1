@@ -1,9 +1,9 @@
 package ar.edu.unq.normans
 
 import ar.edu.unq.bags.Bag
-import ar.edu.unq.damage.PowerAttack
 import ar.edu.unq.items.Item
 import ar.edu.unq.suits.Suit
+import ar.edu.unq.damage.PowerAttack
 
 class Character extends PowerAttack {
 
@@ -48,6 +48,9 @@ class Character extends PowerAttack {
     fatigue += 0.5 * (kms + bag.weight)
   }
 
+  /** Used in combats */
+  def isAlive = energy > 0
+  def hasPowerAttack = powerAttack > 0
 }
 
 /**
