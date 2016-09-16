@@ -43,6 +43,9 @@ class Character {
   }
 
   def attack(character: Character){}
+
+  def isAlive = energy > 0
+//  def hasPowerAtack = powerAttack > 0
 }
 
 object Character {

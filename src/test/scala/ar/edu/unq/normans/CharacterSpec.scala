@@ -1,6 +1,5 @@
 package ar.edu.unq.normans
 
-import ar.edu.unq.combat.Combat
 import ar.edu.unq.utils.BaseSpec
 
 
@@ -10,5 +9,6 @@ class CharacterSpec extends BaseSpec
  with DamageResistanceSpec
  with DamageResponseSpec
  with AttackSpec
+ with CombatSpec
 
 

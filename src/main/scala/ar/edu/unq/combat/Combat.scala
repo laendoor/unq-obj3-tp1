@@ -2,24 +2,19 @@ package ar.edu.unq.combat
 
 import ar.edu.unq.normans.Character
 
-class Combat(red: Character, blue: Character) {
+class Combat(white: Character, black: Character) {
 
-  def isLife(character: Character): Boolean = {character.energy > 0}
+  def start(): Unit = while (isNotOver) roundFight()
 
-  def combat(): Unit = {
-    blue.attack(red)
-    red.attack(blue)
+  def roundFight(): Unit = {
+    if (white.isAlive) white attack black
+    if (black.isAlive) black attack white
   }
 
-  def ataqueTotal(): Unit = {
-     while (this.isLife(blue) ||  this.isLife(red)){
-         combat()
-     }
-  }
+  def isNotOver = bothAlive //|| bothWithPowerAttack
+  def bothAlive: Boolean = black.isAlive && white.isAlive
+//  def bothWithPowerAttack: Boolean = black.hasPowerAtack && white.hasPowerAttack
 
-  def winner(): Character = {
-    if (isLife(blue)) {blue} else {red}
-  }
-
+  def winner(): Character = List(white, black).maxBy(_.energy)
 
 }
