@@ -1,48 +1,58 @@
 package ar.edu.unq.normans
 
-import ar.edu.unq.bags.{Bag, SmallSize}
+import ar.edu.unq.bags.Bag
+import ar.edu.unq.damage.PowerAttack
 import ar.edu.unq.items.Item
 import ar.edu.unq.suits.Suit
 
-class Character {
+class Character extends PowerAttack {
 
   var bag: Bag = new Bag
   var suit: Suit = new Suit
   var energy: Double = 0
-  var altitude: Double = 0.0
+  var fatigue: Double = 0
 
-  private var _gravity: Double = 9.8 // m/s^2, default on earth
-  def gravity = _gravity
-  def gravity_= (grav: Double):Unit = {
-    _gravity = grav
-    bag.gravity = grav
+  /** Oxygen & Gravity depends on Suit */
+  def oxygen: Double = suit.oxygen
+  def gravity = bag.gravity
+  def gravity_= (gravity: Double): Unit = {
+    bag.gravity = gravity
   }
 
+  /** Storing depends on Bag */
   def store(item: Item): Unit = bag store item
   def canStore(item: Item): Boolean = bag canStore item
   def freeSpace: Double = bag.freeSpace
-  def oxygen: Double = suit.oxygen
 
+  /** Space moves depends on Bag */
+  def altitude = bag.altitude
+  def ascend(time: Int): Unit = {
+    bag ascend time
+  }
+
+  /** Under attack */
   def receiveHit(damage: Double, other: Character): Unit = {
     val effectiveDamage = suit absorb damage
+    bag receiveHit effectiveDamage
     energy = Math.max(0, energy - effectiveDamage)
-    bag.receiveHit(effectiveDamage)
   }
 
-
-
-  def ascend(time: Int): Unit = {
-    val ascendingTime = Math.min(time, bag.propulsionTime)
-    bag consumeFuelFor ascendingTime
-    altitude += ascendingTime / 2
+  /** Dale duro otto */
+  override def attack(other: Character): Unit = {
+    other.receiveHit(powerAttack, this)
   }
 
+  /** Walking affects Suit and generates fatigue */
   def walk(kms: Int): Unit = {
-    suit walk (kms, bag.occupiedWeight)
+    suit walk (kms, bag.weight)
+    fatigue += 0.5 * (kms + bag.weight)
   }
 
 }
 
+/**
+  * Companion Object is used to write short & descriptive test
+  */
 object Character {
 
   def apply(energy: Int): Character = {

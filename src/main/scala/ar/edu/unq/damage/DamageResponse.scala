@@ -45,7 +45,7 @@ trait ReflectionDamage extends Character{
 // puntos de daño y tenemos una capacidad de absorción de 0.15,
 // entonces vamos a generar un incremento de 20 * 0.15 puntos
 // de poder de ataque (ver siguiente punto sobre ataque)
-trait DamageAbsorption extends Character with Attack {
+trait DamageAbsorption extends Character with PowerAttack {
 
   val absorption: Double = 0.0 // ej 15% = 0.15
 
