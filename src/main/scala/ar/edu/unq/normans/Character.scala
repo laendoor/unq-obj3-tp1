@@ -9,15 +9,15 @@ class Character extends PowerAttack {
 
   var bag: Bag = new Bag
   var suit: Suit = new Suit
-  var energy: Double = 0
+
+  var xp     : Int = 0
+  var energy : Double = 0
   var fatigue: Double = 0
 
   /** Oxygen & Gravity depends on Suit */
   def oxygen: Double = suit.oxygen
   def gravity = bag.gravity
-  def gravity_= (gravity: Double): Unit = {
-    bag.gravity = gravity
-  }
+  def gravity_= (gravity: Double): Unit = bag.gravity = gravity
 
   /** Storing depends on Bag */
   def store(item: Item): Unit = bag store item

@@ -69,3 +69,8 @@ trait Exhaustion extends PowerAttack {
   def fatigue: Double
   override def powerAttack = Math.max(0, super.powerAttack - fatigue)
 }
+
+trait XPower extends PowerAttack {
+  var xp: Int
+  override def powerAttack = super.powerAttack + xp
+}
