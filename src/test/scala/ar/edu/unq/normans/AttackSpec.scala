@@ -128,6 +128,23 @@ trait AttackSpec extends BaseSpec {
     red.energy shouldBe 198
   }
 
+  "A character with Exhaustion attack characteristics" should "decreases his power attack as he walks" in {
+    val blue = new Character with Duplicator with Exhaustion {
+      powerAttack = 10
+    }
 
+    blue.fatigue shouldBe 0
+    blue.powerAttack shouldBe 20
+
+    blue walk 2
+
+    blue.fatigue shouldBe 1
+    blue.powerAttack shouldBe 19
+
+    blue walk 38
+
+    blue.fatigue shouldBe 20
+    blue.powerAttack shouldBe 0
+  }
 
 }
