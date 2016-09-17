@@ -50,7 +50,7 @@ class Character extends PowerAttack {
 
   /** Used in combats */
   def isAlive = energy > 0
-  def hasPowerAttack = powerAttack > 0
+  def hasPowerAttack = powerAttack > 0.0001
 }
 
 /**
